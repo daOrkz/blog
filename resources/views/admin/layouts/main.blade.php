@@ -12,8 +12,8 @@
 </head>
 <body>
 
-<div class="container text-center">
-    <h3>Admin Panel</h3>
+<div class="container text-center" style="height: 100vh;">
+    <h3 class=" bg-secondary-subtle">Admin Panel</h3>
 
     {{--    nav panel    --}}
     <div class="row">

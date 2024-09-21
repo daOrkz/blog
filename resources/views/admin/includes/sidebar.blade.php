@@ -1,6 +1,6 @@
-<div class="col-2">
+<div class="col-2 bg-primary-subtle pt-5" style="height: 100vh;">
 
-    <ul class="nav flex-column">
+    <ul class="nav flex-column text-black">
         <li class="nav-item ">
             <a class="nav-link active" aria-current="page" href="{{ route('admin.categories.index') }}">
                 <i class="bi bi-card-checklist"></i>
