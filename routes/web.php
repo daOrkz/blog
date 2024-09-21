@@ -16,7 +16,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/', 'IndexController')->name('index');
         Route::get('/create', 'CreateController')->name('create');
 
-        Route::post('/', 'StoreController')->name('store');
+        Route::post('/create', 'StoreController')->name('store');
     });
 });
 
