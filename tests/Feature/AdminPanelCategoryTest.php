@@ -27,8 +27,14 @@ class AdminPanelCategoryTest extends TestCase
 
     public function test_category_index_page_success()
     {
+        $categories = Category::factory(3)->create();
         $response = $this->get('/admin/categories');
         $response->assertOk();
+
+        $CategoriesTitles = $categories->pluck('title')->toArray();
+
+        $response->assertSeeText($CategoriesTitles);
+        $response->assertViewHas('categories', $categories);
     }
 
     public function test_category_create_page_success()
@@ -75,6 +81,88 @@ class AdminPanelCategoryTest extends TestCase
         $response->assertInvalid([
             'title' => 'Такая категория уже есть',
         ]);
+    }
+
+    public function test_category_update_success()
+    {
+        $category = Category::factory()->create();
+        $categoryId = $category->id;
+
+        $data = [
+            'title' => 'title update',
+        ];
+
+        $response = $this->patch("admin/categories/{$categoryId}", $data);
+        $response->assertRedirect('admin/categories');
+
+        $categories = Category::all();
+        $view = $this->view('admin.categories.index', compact('categories'));
+
+        $view->assertSee($data['title']);
+
+        $this->assertDatabaseHas('categories', [
+            'title' => $data['title'],
+        ]);
+    }
+
+    public function test_failed_category_validation_unique_update()
+    {
+        $category = Category::factory()->create();
+        $categoryId = $category->id;
+
+        $data = [
+            'title' => $category->title,
+        ];
+
+        $response = $this->patch("admin/categories/{$categoryId}", $data);
+
+        $response->assertInvalid([
+            'title' => 'Такая категория уже есть',
+        ]);
+    }
+
+    public function test_failed_category_validation_required_update()
+    {
+        $category = Category::factory()->create();
+        $categoryId = $category->id;
+
+        $data = [
+            'title' => '',
+        ];
+
+        $response = $this->patch("admin/categories/{$categoryId}", $data);
+
+        $response->assertInvalid([
+            'title' => 'Поле должно быть заполнено',
+        ]);
+    }
+
+    public function test_category_show_and_render_category()
+    {
+        $category = Category::factory()->create();
+        $categoryId = $category->id;
+
+        $response = $this->get("admin/categories/{$categoryId}");
+
+        $response->assertViewIs('admin.categories.show');
+
+        $response->assertViewHas('category', $category);
+        $response->assertSee($category->title);
+    }
+
+    public function test_deleted_category_only_auth_user()
+    {
+        $this->withoutExceptionHandling();
+
+//        $user = User::factory()->create();
+        $category = Category::factory()->create();
+        $categoryId = $category->id;
+
+        $response = $this->delete("admin/categories/{$categoryId}");
+
+        $response->assertRedirect('admin/categories');
+
+        $this->assertSoftDeleted($category);
 
     }
 }
