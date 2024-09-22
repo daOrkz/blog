@@ -44,9 +44,37 @@ class AdminPanelCategoryTest extends TestCase
         ];
 
         $response = $this->post('/admin/categories/create', $data);
+        $response->assertRedirect('admin/categories');
 
         $this->assertDatabaseHas('categories', [
             'title' => $data['title'],
         ]);
+    }
+
+    public function test_failed_category_validation_required_storage()
+    {
+        $data = [
+            'title' => '',
+        ];
+
+        $response = $this->post('/admin/categories/create', $data);
+        $response->assertInvalid([
+            'title' => 'Поле должно быть заполнено',
+        ]);
+    }
+
+    public function test_failed_category_validation_unique_storage()
+    {
+        $data = [
+            'title' => 'category title',
+        ];
+
+        $response = $this->post('/admin/categories/create', $data);
+        $response = $this->post('/admin/categories/create', $data);
+
+        $response->assertInvalid([
+            'title' => 'Такая категория уже есть',
+        ]);
+
     }
 }

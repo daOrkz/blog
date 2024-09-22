@@ -24,7 +24,7 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string',
+            'title' => 'required|string|unique:App\Models\Category,title',
         ];
     }
 
@@ -32,6 +32,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'title.required' => 'Поле должно быть заполнено',
+            'title.unique' => 'Такая категория уже есть',
         ];
     }
 }
