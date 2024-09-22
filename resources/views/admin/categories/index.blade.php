@@ -32,9 +32,17 @@
                             <th scope="row">{{ $category->id }}</th>
                             <td>{{ $category->title }}</td>
                             <td>0</td>
-                            <td>редактировать</td>
-                            <td> <a href="{{ route('admin.categories.show', $category->id) }}"><i class="bi bi-eye-fill"></i></a> </td>
-                            <td>редактировать</td>
+                            <td><a href="{{ route('admin.categories.edit', $category->id) }}"><i
+                                        class="bi bi-pencil-fill"></i></a></td>
+                            <td><a href="{{ route('admin.categories.show', $category->id) }}"><i
+                                        class="bi bi-eye-fill"></i></a></td>
+                            <td>
+                                <form action="{{ route('admin.categories.destroy', $category->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="border-0 bg-transparent" type="submit" ><i class="bi bi-trash-fill text-danger"></i></button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>

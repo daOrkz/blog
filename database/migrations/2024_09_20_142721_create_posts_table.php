@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreignIdFor(\App\Models\Category::class)
