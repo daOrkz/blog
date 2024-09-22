@@ -12,15 +12,17 @@
         </div>
 
         <div class="row table-category">
-            <div class="col-6">
+            <div class="col-8">
 
                 <table class="table table-striped">
                     <thead>
-                    <tr>
+                    <tr class="table-secondary">
                         <th scope="col">ID</th>
                         <th scope="col">Title</th>
                         <th scope="col">Количество постов</th>
                         <th scope="col">Редактировать</th>
+                        <th scope="col">Просмотр</th>
+                        <th scope="col">Удалить</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -30,6 +32,8 @@
                             <th scope="row">{{ $category->id }}</th>
                             <td>{{ $category->title }}</td>
                             <td>0</td>
+                            <td>редактировать</td>
+                            <td> <a href="{{ route('admin.categories.show', $category->id) }}"><i class="bi bi-eye-fill"></i></a> </td>
                             <td>редактировать</td>
                         </tr>
                     @endforeach
