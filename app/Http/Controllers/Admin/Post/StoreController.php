@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Tag;
+namespace App\Http\Controllers\Admin\Post;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Tag\StoreRequest;
-use App\Models\Tag;
+use App\Http\Requests\Admin\Category\StoreRequest;
+use App\Models\Post;
 
 class StoreController extends Controller
 {
@@ -12,10 +12,10 @@ class StoreController extends Controller
     {
         $data = $request->validated();
 
-        Tag::firstOrCreate(['title' => $data['title']],[
+        Post::firstOrCreate(['title' => $data['title']],[
             'title' => $data['title']
         ]);
 
-        return redirect(route('admin.tags.index'));
+        return redirect(route('admin.posts.index'));
     }
 }

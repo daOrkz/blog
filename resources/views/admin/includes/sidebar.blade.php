@@ -14,7 +14,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ route('admin.posts.index') }}">
                 <i class="bi bi-chat-right-text"></i>
                 <span class="px-3">Посты</span>
             </a>
