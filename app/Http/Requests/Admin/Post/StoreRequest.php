@@ -24,15 +24,24 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|unique:App\Models\Category,title',
+            'title' => 'required|string|unique:App\Models\Post,title',
+            'content' => 'required|string',
+            'preview_image' => 'image|max:100',
+            'main_image' => 'image',
+            'category_id' => 'required|exists:categories,id'
         ];
     }
 
     public function messages()
     {
         return [
-            'title.required' => 'Поле должно быть заполнено',
-            'title.unique' => 'Такая категория уже есть',
+            'title.required' => 'Поле заголовка должно быть заполнено',
+            'title.unique' => 'Такой заголовок уже есть',
+            'content.required' => 'Поле текста должно быть заполнено',
+            'preview_image.image' => 'Файл превью должен быть изображением (jpg, jpeg, png, bmp, gif, svg)',
+            'preview_image.max' => 'Изображение превью не должно быть больше 100кб',
+            'main_image.image' => 'Файл основной картинки должен быть изображением (jpg, jpeg, png, bmp, gif, svg)',
+            'category_id.required' => 'Нужно выбрать категорию',
         ];
     }
 }

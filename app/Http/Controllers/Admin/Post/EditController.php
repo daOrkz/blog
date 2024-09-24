@@ -12,6 +12,6 @@ class EditController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        return view('admin.pots.edit', compact('post'));
+        return view('admin.posts.edit', compact('post'));
     }
 }

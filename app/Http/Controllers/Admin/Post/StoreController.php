@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin\Post;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Category\StoreRequest;
+use App\Http\Requests\Admin\Post\StoreRequest;
 use App\Models\Post;
+use Illuminate\Support\Facades\Storage;
 
 class StoreController extends Controller
 {
@@ -12,9 +13,10 @@ class StoreController extends Controller
     {
         $data = $request->validated();
 
-        Post::firstOrCreate(['title' => $data['title']],[
-            'title' => $data['title']
-        ]);
+        $data['preview_image'] = Storage::put('/images/preview', $data['preview_image']);
+        $data['main_image'] = Storage::put('/images/main', $data['main_image']);
+
+        Post::firstOrCreate($data);
 
         return redirect(route('admin.posts.index'));
     }

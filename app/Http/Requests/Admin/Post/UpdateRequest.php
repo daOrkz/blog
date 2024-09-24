@@ -24,7 +24,8 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|unique:App\Models\Category,title',
+            'title' => 'required|string|unique:App\Models\Post,title',
+            'content' => 'required|string'
         ];
     }
 
@@ -33,6 +34,7 @@ class UpdateRequest extends FormRequest
         return [
             'title.required' => 'Поле должно быть заполнено',
             'title.unique' => 'Такая категория уже есть',
+            'content.required' => 'Поле должно быть заполнено',
         ];
     }
 }

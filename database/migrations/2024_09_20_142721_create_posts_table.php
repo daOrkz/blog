@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
+            $table->string('preview_image')->nullable();
+            $table->string('main_image')->nullable();
             $table->softDeletes();
             $table->timestamps();
 
