@@ -32,15 +32,15 @@
 
                     <div class="row mt-3">
                         <div class="col-8">
-                            <label for="preview" class="form-label">Добавить превью</label>
-                            <input type="file" name="preview_image" id="preview">
+                            <label for="preview_image" class="form-label">Добавить превью</label>
+                            <input type="file" name="preview_image" id="preview_image">
                         </div>
                     </div>
 
                     <div class="row mt-3">
                         <div class="col-8">
-                            <label for="preview" class="form-label">Добавить изображение</label>
-                            <input type="file" name="main_image" id="image">
+                            <label for="main_image" class="form-label">Добавить изображение</label>
+                            <input type="file" name="main_image" id="main_image">
                         </div>
                     </div>
 
@@ -50,11 +50,22 @@
                                 <option value="">Выберете категорию</option>
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}"
-                                    {{ $category->id == old('category_id') ? 'selected' : '' }}
+                                        {{ $category->id == old('category_id') ? 'selected' : '' }}
                                     >{{ $category->title }}</option>
                                 @endforeach
-
                             </select>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div>
+                            <p>Выбирите теги:</p>
+                            @foreach($tags as $tag)
+                                <label for="{{ $tag->title }}">
+                                    <input class="m-2" type="checkbox" name="tag_ids[]" id="{{ $tag->title }}" value="{{ $tag->id }}"
+                                        {{ is_array(old('tag_ids')) && in_array($tag->id, old('tag_ids')) ? 'checked' : '' }}
+                                    >{{ $tag->title }}</label>
+                            @endforeach
                         </div>
                     </div>
 
