@@ -16,6 +16,11 @@ class EditController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
 
+//        foreach ($tags as $tag){;
+//        $post->tags->contains($tag) ? dump($tag) : dump('none');
+//        }
+//        dd($post->tags);
+
         return view('admin.posts.edit', compact('post', 'categories', 'tags'));
     }
 }
