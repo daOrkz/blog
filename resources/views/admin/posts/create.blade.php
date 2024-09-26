@@ -9,7 +9,9 @@
             </div>
 
             <div class="row justify-content-start text-start">
-                <form class="row justify-content-start" action="{{ route('admin.posts.store') }}" method="POST"
+                <form class="row justify-content-start"
+                      action="{{ route('admin.posts.store') }}"
+                      method="POST"
                       enctype="multipart/form-data">
                     @csrf
                     <div class="row">

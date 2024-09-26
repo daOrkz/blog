@@ -14,17 +14,22 @@ class StoreController extends Controller
     {
         $data = $request->validated();
 
-        $tag_ids = $data['tag_ids'];
-        unset($data['tag_ids']);
+        if (isset($data['tag_ids'])) {
+            $tag_ids = $data['tag_ids'];
+            unset($data['tag_ids']);
+        } else $tag_ids = null;
 
         if (isset($data['preview_image']) && isset($data['main_image'])) {
-            $data['preview_image'] = Storage::put('/images/preview', $data['preview_image']);
-            $data['main_image'] = Storage::put('/images/main', $data['main_image']);
+            $data['preview_image'] = Storage::disk('public')->put('/images/preview', $data['preview_image']);
+            $data['main_image'] = Storage::disk('public')->put('/images/main', $data['main_image']);
         }
 
         DB::transaction(function () use ($data, $tag_ids) {
             $posts = Post::firstOrCreate($data);
-            $posts->tags()->attach($tag_ids);
+
+            if (isset($data['tag_ids'])) {
+                $posts->tags()->attach($tag_ids);
+            }
         });
 
         return redirect(route('admin.posts.index'));
