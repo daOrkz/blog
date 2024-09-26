@@ -47,7 +47,9 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ]
+        ],
+
+        "test:result": "@php artisan test --coverage-html tests/result"
     },
     "extra": {
         "laravel": {

@@ -83,6 +83,20 @@ class AdminPanelTagTest extends TestCase
         ]);
     }
 
+    public function test_tags_update_page_success()
+    {
+        $tag = Tag::factory()->create();
+        $tagId = $tag->id;
+
+        $response = $this->get("admin/tags/{$tagId}/edit");
+        $response->assertOk();
+
+//        $tagTitle = $tag->pluck('title')->toArray();
+
+        $response->assertSee($tag->title);
+        $response->assertViewHas('tag', $tag);
+    }
+
     public function test_tags_update_success()
     {
         $tag = Tag::factory()->create();

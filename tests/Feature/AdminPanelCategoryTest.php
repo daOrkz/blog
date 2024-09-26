@@ -83,6 +83,19 @@ class AdminPanelCategoryTest extends TestCase
         ]);
     }
 
+    public function test_category_update_page_success()
+    {
+        $category = Category::factory()->create();
+        $categoryId = $category->id;
+
+        $response = $this->get("admin/categories/{$categoryId}/edit");
+        $response->assertOk();
+
+//        $CategoriesTitles = $category->pluck('title')->toArray();
+
+        $response->assertSee($category->title);
+        $response->assertViewHas('category', $category);
+    }
     public function test_category_update_success()
     {
         $category = Category::factory()->create();
