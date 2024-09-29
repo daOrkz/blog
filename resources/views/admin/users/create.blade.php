@@ -12,7 +12,7 @@
                 <form class="row justify-content-start" action="{{ route('admin.users.store') }}" method="POST">
                     @csrf
                     <div class="row  mb-3">
-                        <input name="name" class="form-control w-25" id="category_title" placeholder="Имя пользователя" value="{{ old('name') }}>
+                        <input name="name" class="form-control w-25" id="category_title" placeholder="Имя пользователя" value="{{ old('name') }}">
                     </div>
 
                     @error('name')

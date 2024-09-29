@@ -14,7 +14,7 @@ class UpdateController extends Controller
 
         $user = User::findOrFail($id);
 
-        $user->update(['title' => $data['title']]);
+        $user->update($data);
 
 //        $category->title = $data['title'];
 //        $category->save();
