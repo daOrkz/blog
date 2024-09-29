@@ -5,6 +5,7 @@
 /storage/app/images
 /vendor
 /tests/result
+/tests/Files
 .env
 .env.backup
 .phpunit.result.cache

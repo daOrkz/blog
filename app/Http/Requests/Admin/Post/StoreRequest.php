@@ -26,7 +26,7 @@ class StoreRequest extends FormRequest
         return [
             'title' => 'required|string|unique:App\Models\Post,title',
             'content' => 'required|string',
-            'preview_image' => 'image|max:100',
+            'preview_image' => 'image|max:100|dimensions:max_width=300,max_height=250',
             'main_image' => 'image',
             'category_id' => 'required|integer|exists:categories,id',
             'tag_ids' => 'nullable|array',
@@ -42,6 +42,7 @@ class StoreRequest extends FormRequest
             'content.required' => 'Поле текста должно быть заполнено',
             'preview_image.image' => 'Файл превью должен быть изображением (jpg, jpeg, png, bmp, gif, svg)',
             'preview_image.max' => 'Изображение превью не должно быть больше 100кб',
+            'preview_image.dimensions' => 'Размер изображения должен быть не больше 300х250',
             'main_image.image' => 'Файл основной картинки должен быть изображением (jpg, jpeg, png, bmp, gif, svg)',
             'category_id.required' => 'Нужно выбрать категорию',
         ];
