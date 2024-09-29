@@ -19,6 +19,12 @@
                 <span class="px-3">Посты</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin.users.index') }}">
+                <i class="bi bi-person-fill"></i>
+                <span class="px-3">Пользователи</span>
+            </a>
+        </li>
     </ul>
 
 </div>
