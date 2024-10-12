@@ -13,7 +13,10 @@
                       method="POST">
                     @csrf
                     @method('PATCH')
-                    <div class="row  mb-3">
+                    <div class="row">
+                        <input type="hidden" name="user_id" value="{{ $user->id }}">
+                    </div>
+                    <div class="row mb-3">
                         <input name="name"
                                class="form-control w-25"
                                id="category_title"
@@ -43,6 +46,17 @@
                     @error('password')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
+
+                    <div class="row mb-3">
+                        <select class="w-25" name="role_id">
+                            <option value="">Выберете роль</option>
+                            @foreach($roles as $id => $role)
+                                <option value="{{ $id }}"
+                                    {{ $id === $user->role_id ? 'selected' : '' }}
+                                >{{ $role }}</option>
+                            @endforeach
+                        </select>
+                    </div>
 
                     <div class="row col-2">
                         <button type="submit" class="btn btn-success">Изменить</button>

@@ -28,6 +28,10 @@
                         <td>Почта</td>
                         <td>{{ $user->email }}</td>
                     </tr>
+                    <tr>
+                        <td>Роль</td>
+                        <td>{{ $role }}</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>

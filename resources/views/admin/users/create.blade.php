@@ -8,19 +8,21 @@
                 <h5>Добавление пользователя</h5>
             </div>
 
-            <div class="row justify-content-start">
+            <div class="row  text-start">
                 <form class="row justify-content-start" action="{{ route('admin.users.store') }}" method="POST">
                     @csrf
                     <div class="row  mb-3">
-                        <input name="name" class="form-control w-25" id="category_title" placeholder="Имя пользователя" value="{{ old('name') }}">
+                        <input name="name" class="form-control w-25" id="category_title" placeholder="Имя пользователя"
+                               value="{{ old('name') }}">
                     </div>
 
                     @error('name')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                    <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
 
                     <div class="row  mb-3">
-                        <input name="email" class="form-control w-25" id="category_title" placeholder="Email пользователя" value="{{ old('email') }}">
+                        <input name="email" class="form-control w-25" id="category_title"
+                               placeholder="Email пользователя" value="{{ old('email') }}">
                     </div>
 
                     @error('email')
@@ -28,12 +30,24 @@
                     @enderror
 
                     <div class="row  mb-3">
-                        <input name="password" class="form-control w-25" id="category_title" placeholder="Пароль пользователя">
+                        <input name="password" class="form-control w-25" id="category_title"
+                               placeholder="Пароль пользователя">
                     </div>
 
                     @error('password')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
+
+                    <div class="row mb-3">
+                        <select class="w-25" name="role_id">
+                            <option value="">Выберете роль</option>
+                            @foreach($roles as $id => $role)
+                                <option value="{{ $id }}"
+                                    {{ $id === old('role_id') ? 'selected' : '' }}
+                                >{{ $role }}</option>
+                            @endforeach
+                        </select>
+                    </div>
 
                     <div class="row col-2">
                         <button type="submit" class="btn btn-success">Создать</button>

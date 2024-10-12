@@ -12,6 +12,7 @@ class EditController extends Controller
     {
         $user = User::findOrFail($id);
 
-        return view('admin.users.edit', compact('user'));
+        $roles = User::getRoles();
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 }

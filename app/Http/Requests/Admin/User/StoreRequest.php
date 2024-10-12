@@ -27,6 +27,7 @@ class StoreRequest extends FormRequest
             'name' => 'required|string',
             'email' => 'required|email:dns|unique:App\Models\User,email',
             'password' => 'required|string|min:3',
+            'role_id' => 'integer',
         ];
     }
 

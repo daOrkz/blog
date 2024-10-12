@@ -25,7 +25,9 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'email' => 'required|email:dns',
+            'email' => "required|email:dns|unique:App\Models\User,email,$this->user_id",
+            'user_id' => 'required|integer|exists:App\Models\User,id',
+            'role_id' => 'integer',
         ];
     }
 
