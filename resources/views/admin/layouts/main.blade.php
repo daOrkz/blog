@@ -12,10 +12,20 @@
 </head>
 <body>
 
-<div class="container text-center" style="height: 100vh;">
-    <h3 class=" bg-secondary-subtle">Admin Panel</h3>
+<div class="container" style="height: 100vh;">
+    <div class="row bg-secondary-subtle p-3">
+        <div class=" d-flex justify-content-around">
+            <h3 class=" text-center">Admin Panel</h3>
+            <div class="">
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <input class="btn btn-success" type="submit" value="Выйти">
+                </form>
+            </div>
+        </div>
+    </div>
 
-    {{--    nav panel    --}}
+
     <div class="row">
 
         @include('admin.includes.sidebar')

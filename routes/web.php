@@ -7,7 +7,7 @@ Route::namespace('Main')->group(function (){
     Route::get('/', 'IndexController');
 });
 
-Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'admin'])->namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     Route::namespace('Main')->group(function (){
         Route::get('/', 'IndexController')->name('index');
     });
