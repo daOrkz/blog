@@ -4,6 +4,7 @@
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Testing\File;
@@ -14,10 +15,18 @@ class AdminPanelPostTest extends TestCase
     use RefreshDatabase;
     use WithFaker;
 
+    private $userAdmin;
+
+
     protected function setUp(): void
     {
         parent::setUp();
 
+        $this->userAdmin = User::factory()->create([
+            'name' => 'admin',
+            'email' => 'admin@mail.com',
+            'role_id' => '0',
+        ]);
     }
 
 
@@ -25,7 +34,7 @@ class AdminPanelPostTest extends TestCase
     {
         $posts = Post::factory(3)->create();
 
-        $response = $this->get('/admin/posts');
+        $response = $this->actingAs($this->userAdmin)->get('/admin/posts');
         $response->assertOk();
 
         $postsTitles = $posts->pluck('title')->toArray();
@@ -36,7 +45,7 @@ class AdminPanelPostTest extends TestCase
 
     public function test_post_create_page_success()
     {
-        $response = $this->get('/admin/posts/create');
+        $response = $this->actingAs($this->userAdmin)->get('/admin/posts/create');
         $response->assertOk();
     }
 
@@ -51,12 +60,11 @@ class AdminPanelPostTest extends TestCase
             'category_id' => $categoryId,
         ];
 
-        $response = $this->post('/admin/posts/create', $data);
+        $response = $this->actingAs($this->userAdmin)->post('/admin/posts/create', $data);
         $response->assertRedirect('admin/posts');
 
         $this->assertDatabaseHas('posts', $data);
     }
-
 
 
     public function test_failed_post_validation_title_required_storage()
@@ -65,7 +73,7 @@ class AdminPanelPostTest extends TestCase
             'title' => '',
         ];
 
-        $response = $this->post('/admin/posts/create', $data);
+        $response = $this->actingAs($this->userAdmin)->post('/admin/posts/create', $data);
         $response->assertInvalid([
             'title' => 'Поле заголовка должно быть заполнено',
         ]);
@@ -78,7 +86,7 @@ class AdminPanelPostTest extends TestCase
             'content' => '',
         ];
 
-        $response = $this->post('/admin/posts/create', $data);
+        $response = $this->actingAs($this->userAdmin)->post('/admin/posts/create', $data);
         $response->assertInvalid([
             'content' => 'Поле текста должно быть заполнено',
         ]);
@@ -92,7 +100,7 @@ class AdminPanelPostTest extends TestCase
             'category_id' => '',
         ];
 
-        $response = $this->post('/admin/posts/create', $data);
+        $response = $this->actingAs($this->userAdmin)->post('/admin/posts/create', $data);
         $response->assertInvalid([
             'category_id' => 'Нужно выбрать категорию',
         ]);
@@ -112,8 +120,8 @@ class AdminPanelPostTest extends TestCase
             'category_id' => $categoryId,
         ];
 
-        $response = $this->post('/admin/posts/create', $data);
-        $response = $this->post('/admin/posts/create', $data);
+        $response = $this->actingAs($this->userAdmin)->post('/admin/posts/create', $data);
+        $response = $this->actingAs($this->userAdmin)->post('/admin/posts/create', $data);
 
         $response->assertInvalid([
             'title' => 'Такой заголовок уже есть',
@@ -129,7 +137,7 @@ class AdminPanelPostTest extends TestCase
             'category_id' => '',
         ];
 
-        $response = $this->post('/admin/posts/create', $data);
+        $response = $this->actingAs($this->userAdmin)->post('/admin/posts/create', $data);
         $response->assertInvalid([
             'preview_image' => 'Размер изображения должен быть не больше 300х250',
         ]);
@@ -143,7 +151,7 @@ class AdminPanelPostTest extends TestCase
             'preview_image' => File::create('file.txt'),
         ];
 
-        $response = $this->post('/admin/posts/create', $data);
+        $response = $this->actingAs($this->userAdmin)->post('/admin/posts/create', $data);
         $response->assertInvalid([
             'preview_image' => 'Файл превью должен быть изображением (jpg, jpeg, png, bmp, gif, svg)',
         ]);
@@ -157,7 +165,7 @@ class AdminPanelPostTest extends TestCase
             'main_image' => File::create('file.txt'),
         ];
 
-        $response = $this->post('/admin/posts/create', $data);
+        $response = $this->actingAs($this->userAdmin)->post('/admin/posts/create', $data);
         $response->assertInvalid([
             'main_image' => 'Файл основной картинки должен быть изображением (jpg, jpeg, png, bmp, gif, svg)',
         ]);
@@ -168,7 +176,7 @@ class AdminPanelPostTest extends TestCase
         $post = Post::factory()->create();
         $postId = $post->id;
 
-        $response = $this->get("admin/posts/{$postId}/edit");
+        $response = $this->actingAs($this->userAdmin)->get("admin/posts/{$postId}/edit");
         $response->assertOk();
 
 //        $tagTitle = $post->pluck('title')->toArray();
@@ -191,7 +199,7 @@ class AdminPanelPostTest extends TestCase
             'category_id' => $categoryId,
         ];
 
-        $response = $this->patch("admin/posts/{$postId}", $data);
+        $response = $this->actingAs($this->userAdmin)->patch("admin/posts/{$postId}", $data);
         $response->assertRedirect('admin/posts');
 
         $posts = Post::all();
@@ -212,7 +220,7 @@ class AdminPanelPostTest extends TestCase
             'title' => '',
         ];
 
-        $response = $this->patch("admin/posts/{$postId}", $data);
+        $response = $this->actingAs($this->userAdmin)->patch("admin/posts/{$postId}", $data);
 
         $response->assertInvalid([
             'title' => 'Поле заголовка должно быть заполнено',
@@ -224,7 +232,7 @@ class AdminPanelPostTest extends TestCase
         $post = Post::factory()->create();
         $postId = $post->id;
 
-        $response = $this->get("admin/posts/{$postId}");
+        $response = $this->actingAs($this->userAdmin)->get("admin/posts/{$postId}");
 
         $response->assertViewIs('admin.posts.show');
 
@@ -241,26 +249,43 @@ class AdminPanelPostTest extends TestCase
         $post = Post::factory()->create();
         $postId = $post->id;
 
-        $response = $this->delete("admin/posts/{$postId}");
+        $response = $this->actingAs($this->userAdmin)->delete("admin/posts/{$postId}");
 
         $response->assertRedirect('admin/posts');
 
         $this->assertSoftDeleted($post);
     }
-    // TODO: NOT_auth_user
-    /**
-     * public function test_deleted_post_NOT_auth_user()
-     * {
-     * $post = Post::factory()->create();
-     * $postId = $post->id;
-     *
-     * $response = $this->delete("/posts/{$postId}");
-     *
-     * $response->assertRedirect();
-     *
-     * $this->assertDatabaseHas('posts', [
-     * 'id' => $postId,
-     * ]);
-     * }
-     */
+
+    public function test_deleted_post_NOT_auth_user()
+    {
+        $post = Post::factory()->create();
+        $postId = $post->id;
+
+        $response = $this->delete("admin/posts/{$postId}");
+
+        $response->assertRedirect();
+
+        $this->assertDatabaseHas('posts', [
+            'id' => $postId,
+        ]);
+    }
+
+    public function test_failed_post_index_page()
+    {
+        $response = $this->get('/admin/posts');
+
+        $response->assertRedirect();
+
+    }
+
+    public function test_failed_post_update_page()
+    {
+        $post = Post::factory()->create();
+        $postId = $post->id;
+
+        $response = $this->get("admin/posts/{$postId}/edit");
+        $response->assertRedirect();
+
+    }
+
 }
