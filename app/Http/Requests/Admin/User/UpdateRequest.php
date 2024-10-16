@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'email' => "required|email:dns|unique:App\Models\User,email,$this->user_id",
+            'email' => "required|email|unique:App\Models\User,email,$this->user_id",
             'user_id' => 'required|integer|exists:App\Models\User,id',
             'role_id' => 'integer',
         ];
@@ -36,6 +36,7 @@ class UpdateRequest extends FormRequest
         return [
             'name.required' => 'Поле должно быть заполнено',
             'email.required' => 'Поле должно быть заполнено',
+            'email.unique' => 'Такая почта уже есть',
             'email.email' => 'Почта должна быть в формате mail@domain',
         ];
     }
