@@ -24,6 +24,12 @@ class AdminPanelCategoryTest extends TestCase
             'email' => 'admin@mail.com',
             'role_id' => '0',
         ]);
+
+        $this->userReader = User::factory()->create([
+            'name' => 'reader',
+            'email' => 'reader@mail.com',
+            'role_id' => '1',
+        ]);
     }
 
     public function test_login_admin_page()
@@ -204,6 +210,13 @@ class AdminPanelCategoryTest extends TestCase
         $response = $this->get('/admin');
 
         $response->assertRedirect();
+    }
+
+    public function test_failed_login_reader_to_admin_category_page()
+    {
+        $response = $this->actingAs($this->userReader)->get('/admin/categories');
+
+        $response->assertNotFound();
     }
 
     public function test_failed_category_create_page()

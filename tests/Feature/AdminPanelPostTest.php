@@ -27,6 +27,12 @@ class AdminPanelPostTest extends TestCase
             'email' => 'admin@mail.com',
             'role_id' => '0',
         ]);
+
+        $this->userReader = User::factory()->create([
+            'name' => 'reader',
+            'email' => 'reader@mail.com',
+            'role_id' => '1',
+        ]);
     }
 
 
@@ -275,7 +281,13 @@ class AdminPanelPostTest extends TestCase
         $response = $this->get('/admin/posts');
 
         $response->assertRedirect();
+    }
 
+    public function test_failed_login_reader_to_admin_Post_page()
+    {
+        $response = $this->actingAs($this->userReader)->get('/admin/posts');
+
+        $response->assertNotFound();
     }
 
     public function test_failed_post_update_page()

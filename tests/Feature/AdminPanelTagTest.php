@@ -23,6 +23,12 @@ class AdminPanelTagTest extends TestCase
             'email' => 'admin@mail.com',
             'role_id' => '0',
         ]);
+
+        $this->userReader = User::factory()->create([
+            'name' => 'reader',
+            'email' => 'reader@mail.com',
+            'role_id' => '1',
+        ]);
     }
 
     public function test_login_admin_page()
@@ -206,6 +212,21 @@ class AdminPanelTagTest extends TestCase
         $response->assertRedirect();
     }
 
+    public function test_failed_login_reader_to_admin_page()
+    {
+        $response = $this->actingAs($this->userReader)->get('/admin');
+
+//        $response->assertRedirect();
+        $response->assertNotFound();
+    }
+
+    public function test_failed_login_reader_to_admin_tag_page()
+    {
+        $response = $this->actingAs($this->userReader)->get('/admin/tags');
+
+        $response->assertNotFound();
+    }
+
     public function test_failed_tags_index_page()
     {
         $response = $this->get('/admin/tags');
@@ -221,7 +242,16 @@ class AdminPanelTagTest extends TestCase
 
         $response = $this->post('/admin/tags/create', $data);
 
-        $response->assertRedirect();
+        $response->assertRedirect('login');
 
     }
+/*
+    public function test_unauthorized_login_admin_page()
+    {
+        $response = $this->get('/admin');
+
+        $response->assertUnauthorized();
+    }
+*/
+
 }
