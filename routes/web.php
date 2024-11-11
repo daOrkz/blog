@@ -7,7 +7,7 @@ Route::namespace('Main')->group(function (){
     Route::get('/', 'IndexController');
 });
 
-Route::middleware(['auth', 'admin'])->namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'admin', 'verified'])->namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     Route::namespace('Main')->group(function (){
         Route::get('/', 'IndexController')->name('index');
     });
@@ -61,6 +61,6 @@ Route::middleware(['auth', 'admin'])->namespace('Admin')->prefix('admin')->name(
     });
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
