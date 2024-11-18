@@ -1,11 +1,14 @@
 <?php
 
 
+use App\Mail\User\SendPassword;
 use App\Models\Category;
 use App\Models\User;
 use Database\Seeders\UserAdminSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Queue;
 use Tests\TestCase;
 
 class AdminPanelUserTest extends TestCase
@@ -19,6 +22,9 @@ class AdminPanelUserTest extends TestCase
     {
         parent::setUp();
 
+//        Mail::fake();
+//        Queue::fake();
+
         $this->users = User::factory(5)->create();
 
         $this->userAdmin = User::factory()->create([
@@ -30,6 +36,7 @@ class AdminPanelUserTest extends TestCase
         $this->userReader = User::factory()->create([
             'name' => 'reader',
             'email' => 'reader@mail.com',
+            'password' => '123',
             'role_id' => '1',
         ]);
     }
@@ -62,6 +69,9 @@ class AdminPanelUserTest extends TestCase
 
     public function test_create_storage_success()
     {
+        Mail::fake();
+        Queue::fake();
+
         $data = [
             'name' => 'admin',
             'email' => 'testuser@mail.com',
@@ -242,4 +252,44 @@ class AdminPanelUserTest extends TestCase
         $response->assertRedirect();
     }
 
+    public function test_email_class_has_envelope()
+    {
+        $this->withoutExceptionHandling();
+
+        $data = [
+            'name' => 'Tom',
+            'password' => '123',
+            'email' => 'test@email.com'
+        ];
+
+        $mail = new SendPassword($data);
+
+        $mail->assertHasSubject('Send Password');
+        $mail->assertSeeInHtml($data['name']);
+        $mail->assertSeeInHtml($data['password']);
+        $mail->assertSeeInHtml($data['email']);
+    }
+
+    public function test_send_email_to_user()
+    {
+        $this->withoutExceptionHandling();
+
+        Mail::fake();
+        Queue::fake();
+
+        $data = [
+            'name' => 'Tom',
+            'password' => '123',
+            'email' => 'test@email.com'
+        ];
+
+
+        Mail::to($data['email'])->queue(new SendPassword($data));
+
+        Mail::assertQueued(function (SendPassword $mail) use ($data) {
+            return $mail->email === $data['email'] &&
+                $mail->password === $data['password'] &&
+                $mail->name === $data['name'];
+        });
+    }
 }

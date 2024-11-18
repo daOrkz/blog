@@ -16,11 +16,11 @@ class StoreController extends Controller
     {
         $data = $request->validated();
 
+        Mail::to($data['email'])->queue(new SendPassword($data));
+
         $data['password'] = Hash::make($data['password']);
 
         $user = User::firstOrCreate(['email' => $data['email']], $data);
-
-        Mail::to($data['email'])->send(new SendPassword($data));
 
         event(new Registered($user));
 

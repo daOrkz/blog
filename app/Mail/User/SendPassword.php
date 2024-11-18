@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class SendPassword extends Mailable
+class SendPassword extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -17,7 +17,7 @@ class SendPassword extends Mailable
     public string $name;
     public string $email;
 
-    public function __construct(array $data)
+    public function __construct($data)
     {
         $this->password = $data['password'];
         $this->name = $data['name'];
