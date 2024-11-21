@@ -7,6 +7,12 @@ Route::namespace('Main')->group(function (){
     Route::get('/', 'IndexController');
 });
 
+Route::middleware(['auth', 'verified'])->namespace('Personal')->prefix('personal')->name('personal.')->group(function () {
+    Route::namespace('Main')->group(function () {
+        Route::get('/', 'IndexController')->name('index');
+    });
+});
+
 Route::middleware(['auth', 'admin', 'verified'])->namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     Route::namespace('Main')->group(function (){
         Route::get('/', 'IndexController')->name('index');

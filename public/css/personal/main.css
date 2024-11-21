@@ -1,0 +1,19 @@
+@import url(../reset.css);
+@import "sidebar.css";
+@import "statistic.css";
+
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.container-wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.content{
+    width: 100%;
+    margin-left: 20px;
+}

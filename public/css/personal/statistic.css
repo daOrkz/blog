@@ -1,0 +1,43 @@
+.title-content {
+    font-size: 3em;
+    margin: 20px;
+    text-align: center;
+}
+
+.statistic-wrap {
+    width: 100%;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card {
+    width: 25%;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.bg-color-green {
+    background-color: forestgreen;
+}
+.bg-color-yellow {
+    background-color: yellowgreen;
+}
+.bg-color-red {
+    background-color: coral;
+}
+
+.card-title {
+    font-size: 2.5em;
+    padding-bottom: 15px;
+}
+
+.card-subtitle {
+    font-size: 2.5em;
+    padding-bottom: 15px;
+}
+

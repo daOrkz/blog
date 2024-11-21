@@ -1,0 +1,44 @@
+.sidebar-wrap {
+    margin-top: 50px;
+    width: 250px;
+}
+
+.sidebar {
+    height: 100vh;
+    background-color: lightskyblue;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-item {
+    height: 40px;
+}
+
+.nav-link {
+    height: 100%;
+    padding-left:15px;
+}
+
+.nav-link:hover {
+    background-color: lightslategray;
+    transition: 0.3s;
+}
+
+.nav-link-wrap {
+    display: flex;
+    /*justify-content: space-between;*/
+    align-items: center;
+}
+
+.nav-img {
+    height: 25px;
+    padding-right: 15px;
+}
+
+.nav-link-text {
+    font-size: 2em;
+    color: black;
+}
