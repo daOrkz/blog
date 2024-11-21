@@ -2,6 +2,12 @@
 
     <ul class="nav flex-column text-black">
         <li class="nav-item ">
+            <a class="nav-link active" aria-current="page" href="{{ route('admin.index') }}">
+                <i class="bi bi-house-door"></i>
+                <span class="px-3">Статистика</span>
+            </a>
+        </li>
+        <li class="nav-item ">
             <a class="nav-link active" aria-current="page" href="{{ route('admin.categories.index') }}">
                 <i class="bi bi-card-checklist"></i>
                 <span class="px-3">Категории</span>

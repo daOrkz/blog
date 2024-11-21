@@ -4,37 +4,33 @@
 
     {{--  content  --}}
     <div class="col-10 mt-3">
-        <div class="row row-cols-2 justify-content-around">
-            <div class="card" style="width: 18rem;">
+        <h3 class="text-center">Статистика</h3>
+        <div class="row row-cols-2 justify-content-between">
+            <div class="card bg-primary col-3">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <h5 class="card-title">Пользователи</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">{{ $data['usersCount'] }}</h6>
                 </div>
             </div>
 
-            <div class="card" style="width: 18rem;">
+            <div class="card bg-secondary col-3">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <h5 class="card-title">Посты</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">{{ $data['postsCount'] }}</h6>
                 </div>
             </div>
 
-            <div class="card" style="width: 18rem;">
+            <div class="card bg-warning col-3">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <h5 class="card-title">Категории</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">{{ $data['categoryCount'] }}</h6>
+                </div>
+            </div>
+
+            <div class="card bg-success col-3">
+                <div class="card-body">
+                    <h5 class="card-title">Теги</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">{{ $data['tagsCount'] }}</h6>
                 </div>
             </div>
         </div>

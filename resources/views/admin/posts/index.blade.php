@@ -8,7 +8,6 @@
             <div class="col-3 mb-3">
                 <a class="btn btn-primary" href="{{ route('admin.posts.create') }}">Создать пост</a>
             </div>
-
         </div>
 
         <div class="row table-category">
@@ -19,7 +18,7 @@
                     <tr class="table-secondary">
                         <th scope="col">ID</th>
                         <th scope="col">Title</th>
-                        <th scope="col">Количество постов</th>
+                        <th scope="col">Количество лайков</th>
                         <th scope="col">Редактировать</th>
                         <th scope="col">Просмотр</th>
                         <th scope="col">Удалить</th>
