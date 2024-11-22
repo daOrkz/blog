@@ -11,6 +11,12 @@ Route::middleware(['auth', 'verified'])->namespace('Personal')->prefix('personal
     Route::namespace('Main')->group(function () {
         Route::get('/', 'IndexController')->name('index');
     });
+    Route::namespace('Liked')->prefix('liked')->name('liked.')->group(function () {
+        Route::get('/', 'IndexController')->name('index');
+    });
+    Route::namespace('Comment')->prefix('comment')->name('comment.')->group(function () {
+        Route::get('/', 'IndexController')->name('index');
+    });
 });
 
 Route::middleware(['auth', 'admin', 'verified'])->namespace('Admin')->prefix('admin')->name('admin.')->group(function () {

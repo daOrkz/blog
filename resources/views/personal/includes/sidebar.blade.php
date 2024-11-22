@@ -9,9 +9,16 @@
         </li>
 
         <li class="nav-item ">
-            <a class="nav-link nav-link-wrap" href="">
+            <a class="nav-link nav-link-wrap" href="{{ route('personal.liked.index') }}">
                 <img class="nav-img" src="{{ asset('img/personal/like.svg') }}" alt="like">
                 <span class="nav-link-text">Любимые посты</span>
+            </a>
+        </li>
+
+        <li class="nav-item ">
+            <a class="nav-link nav-link-wrap" href="{{ route('personal.comment.index') }}">
+                <img class="nav-img" src="{{ asset('img/personal/comment.svg') }}" alt="comment">
+                <span class="nav-link-text">Комментарии</span>
             </a>
         </li>
 
