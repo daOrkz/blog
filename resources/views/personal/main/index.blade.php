@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="statistic-wrap">
-        <h3 class="title-content">Личный кабинет</h3>
+        <h3 class="title-content">Статистика</h3>
         <div class="card-container">
             <div class="card">
                 <div class="card-body bg-color-green">

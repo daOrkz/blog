@@ -7,11 +7,43 @@
     max-width: 1200px;
 }
 
+.personal {
+
+    background-color: grey;
+}
+
+.personal-wrap {
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.personal-title-text {
+    font-size: 3em;
+}
+
+.personal-name {
+
+}
+
+.personal-name-text {
+    font-size: 2.5em;
+}
+
+.btn {
+    font-size: 2em;
+    padding: 5px 10px;
+}
+
+.btn-logout {
+    background-color: steelblue;
+}
+
 .container-wrap {
     display: flex;
     justify-content: space-between;
 }
-
 
 .content{
     width: 100%;

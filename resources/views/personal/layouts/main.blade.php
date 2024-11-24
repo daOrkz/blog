@@ -18,6 +18,24 @@
 
 
 <div class="container">
+    <div class="personal">
+        <div class="personal-wrap">
+            <div class="personal-title">
+                <h3 class="personal-title-text">Личный кабинет</h3>
+            </div>
+
+            <div class="personal-name">
+                <h3 class="personal-name-text">{{ $user->name }}</h3>
+            </div>
+
+            <div class="">
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <input class="btn btn-logout" type="submit" value="Выйти">
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="container-wrap">
         <div class="sidebar">
             @include('personal.includes.sidebar')
