@@ -13,6 +13,7 @@ Route::middleware(['auth', 'verified'])->namespace('Personal')->prefix('personal
     });
     Route::namespace('Liked')->prefix('liked')->name('liked.')->group(function () {
         Route::get('/', 'IndexController')->name('index');
+        Route::delete('/{id}', 'DestroyController')->name('destroy');
     });
     Route::namespace('Comment')->prefix('comment')->name('comment.')->group(function () {
         Route::get('/', 'IndexController')->name('index');

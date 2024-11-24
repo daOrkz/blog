@@ -10,9 +10,9 @@ class DestroyController extends Controller
 {
     public function __invoke($id)
     {
-        $tag = Post::findOrFail($id);
+        $post = Post::findOrFail($id);
 
-        $tag->delete();
+        $post->delete();
 
         return redirect(route('admin.posts.index'));
     }

@@ -1,6 +1,7 @@
 @import url(../reset.css);
 @import "sidebar.css";
 @import "statistic.css";
+@import "likes.css";
 
 .container {
     margin: 0 auto;
