@@ -9,8 +9,8 @@
             <thead>
             <tr class="">
                 <th scope="col">ID</th>
-                <th scope="col">Title</th>
-                <th scope="col">Просмотр</th>
+                <th scope="col">Комментарий</th>
+                <th scope="col">Редактировать</th>
                 <th scope="col">Удалить</th>
             </tr>
             </thead>
@@ -20,11 +20,11 @@
                 <tr>
                     <td>{{ $comment->id }}</td>
                     <td>{{ $comment->text }}</td>
-                    <td><a href="">
+                    <td><a href="{{ route('personal.comment.destroy', $comment->id) }}">
                             <img class="table-img" src="{{ asset('img/personal/pencil.svg') }}" alt="eye">
                         </a></td>
                     <td>
-                        <form action="{{ route('personal.liked.destroy', $comment->id) }}" method="post">
+                        <form action="{{ route('personal.comment.destroy', $comment->id) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <button class="btn delete" type="submit" ><img class="table-img" src="{{ asset('img/personal/trash.svg') }}" alt="eye"></button>

@@ -2,6 +2,7 @@
 @import "sidebar.css";
 @import "statistic.css";
 @import "likes.css";
+@import "comment.css";
 
 .container {
     margin: 0 auto;
@@ -9,7 +10,6 @@
 }
 
 .personal {
-
     background-color: grey;
 }
 
@@ -41,6 +41,10 @@
     background-color: steelblue;
 }
 
+.btn-submit {
+    background-color: darkgreen;
+}
+
 .container-wrap {
     display: flex;
     justify-content: space-between;
@@ -49,4 +53,9 @@
 .content{
     width: 100%;
     margin-left: 20px;
+}
+
+.alert {
+    font-size: 2em;
+    color: darkred;
 }

@@ -17,6 +17,9 @@ Route::middleware(['auth', 'verified'])->namespace('Personal')->prefix('personal
     });
     Route::namespace('Comment')->prefix('comment')->name('comment.')->group(function () {
         Route::get('/', 'IndexController')->name('index');
+        Route::get('/{id}/edit', 'EditController')->name('edit');
+        Route::patch('/{id}', 'UpdateController')->name('update');
+        Route::delete('/{id}', 'DestroyController')->name('destroy');
     });
 });
 

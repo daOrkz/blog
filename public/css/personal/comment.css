@@ -1,0 +1,14 @@
+.form-edit {
+
+}
+
+.form-edit-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.textarea-text {
+    font-size: 2em;
+}
+
+

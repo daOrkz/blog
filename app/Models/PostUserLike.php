@@ -18,6 +18,4 @@ class PostUserLike extends Model
     {
         return LikesFactory::new();
     }
-
-
 }
