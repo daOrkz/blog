@@ -1,0 +1,147 @@
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.container-wrap {
+    width: 100%;
+}
+
+.content-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-content {
+    /*max-width: 1000px;*/
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card {
+    margin-bottom: 30px;
+}
+
+.card-wrap {
+    /*width: 100%;*/
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+.card {
+    width: 25%;
+    height: 200px;
+    border: 2px solid black;
+
+    margin-bottom: 15px;
+}
+
+.card-elem-wrap {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-tittle-wrap {
+    padding: 10px;
+}
+
+.card-tittle-text {
+    font-size: 2em;
+}
+
+card-img-wrap {
+
+}
+
+.card-img-prev {
+
+}
+
+.card-category-text {
+    font-size: 1.5em;
+}
+
+.card-text-wrap {
+    height: 50px;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.card-text-text {
+    font-size: 1.8em;
+}
+
+.card-link-wrap {
+    padding-bottom: 10px;
+}
+
+.card-link {
+    font-size: 1.5em;
+}
+
+
+/* === random posts === */
+
+.random-title-wrap {
+    margin-bottom: 30px;
+}
+
+.random-title-text {
+    font-size: 3em;
+}
+
+
+/* === liked post ===*/
+
+.liked-title {
+    font-size: 2.5em;
+    text-align: center;
+}
+
+.post-liked {
+    min-width: 300px;
+}
+
+.liked {
+    border: 1px solid black;
+}
+
+.liked-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.liked-img-wrap {
+    margin-left: 10px;
+}
+
+.liked-img {
+    height: 50px;
+}
+
+.liked-title-text {
+    font-size: 1.5em ;
+}
+
+.liked-count-wrap {
+    display: flex;
+    align-items: center;
+
+    margin-right: 15px;
+}
+
+.liked-count-img {
+    height: 1.5em;
+    margin-right: 10px;
+}
+
+.liked-count {
+    font-size: 2em;
+}

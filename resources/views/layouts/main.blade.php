@@ -5,14 +5,21 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ 'css/reset.css' }}">
+    <link rel="stylesheet" href="{{ asset('css/main/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main/paginate.css') }}">
     <title>{{ config('app.name', 'Blog') }}</title>
 </head>
 <body>
 
-@yield('content')
+<div class="container">
+    <div class="container-wrap">
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        @yield('content')
+
+    </div>
+</div>
+
+
 </body>
 </html>

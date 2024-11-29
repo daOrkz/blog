@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::namespace('Main')->group(function (){
-    Route::get('/', 'IndexController');
+Route::namespace('Main')->name('main.')->group(function (){
+    Route::get('/', 'IndexController')->name('index');
 });
 
 Route::middleware(['auth', 'verified'])->namespace('Personal')->prefix('personal')->name('personal.')->group(function () {

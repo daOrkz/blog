@@ -25,13 +25,13 @@ class DatabaseSeeder extends Seeder
             UserReaderSeeder::class,
         ]);
 
-//         \App\Models\User::factory(10)->create();
-        User::factory(5)
-            ->has(Post::factory()->count(10), 'userPostLiked')
-            ->create();
+         \App\Models\User::factory(10)->create();
         Category::factory(5)->create();
+//        User::factory(5)
+//            ->has(Post::factory()->count(10), 'userPostLiked')
+//            ->create();
         Tag::factory(5)->create();
-//        Post::factory(5)->create();
+        Post::factory(10)->create();
         Comment::factory(50)->create();
         PostUserLike::factory(10)->create();
 
