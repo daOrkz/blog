@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::namespace('Main')->name('main.')->group(function (){
     Route::get('/', 'IndexController')->name('index');
+    Route::get('/{id}', 'ShowController')->name('show');
 });
 
 Route::middleware(['auth', 'verified'])->namespace('Personal')->prefix('personal')->name('personal.')->group(function () {

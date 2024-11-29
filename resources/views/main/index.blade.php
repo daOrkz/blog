@@ -27,7 +27,7 @@
                                 </div>
 
                                 <div class="card-link-wrap">
-                                    <a class="card-link" href="">Читать</a>
+                                    <a class="card-link" href="{{ route('main.show', $post->id) }}">Читать</a>
                                 </div>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                                         </div>
 
                                         <div class="card-link-wrap">
-                                            <a class="card-link" href="">Читать</a>
+                                            <a class="card-link" href="{{ route('main.show', $post->id) }}">Читать</a>
                                         </div>
                                     </div>
                                 </div>
@@ -106,7 +106,9 @@
                             <img class="liked-img" src="" alt="liked_img">
                         </div>
                         <div class="liked-title-wrap">
-                            <p class="liked-title-text">{{ $post->title }}</p>
+                            <a href="{{ (route('main.show', $post->id)) }}">
+                                <p class="liked-title-text">{{ $post->title }}</p>
+                            </a>
                         </div>
                         <div class="liked-count-wrap">
                             <img class="liked-count-img" src="{{ asset('img/home/heart-fill.svg') }}" alt="">
