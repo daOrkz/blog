@@ -2,9 +2,16 @@
 
     <ul class="nav">
         <li class="nav-item ">
-            <a class="nav-link nav-link-wrap" href="{{ route('personal.index') }}">
+            <a class="nav-link nav-link-wrap" href="{{ route('main.index') }}">
                 <img class="nav-img" src="{{ asset('img/personal/home.svg') }}" alt="home">
                 <p class="nav-link-text">Главная</p>
+            </a>
+        </li>
+
+        <li class="nav-item ">
+            <a class="nav-link nav-link-wrap" href="{{ route('personal.index') }}">
+                <img class="nav-img" src="{{ asset('img/personal/person.svg') }}" alt="home">
+                <p class="nav-link-text">Личный кабинет</p>
             </a>
         </li>
 

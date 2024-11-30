@@ -15,6 +15,7 @@
 <div class="container">
     <div class="container-wrap">
 
+        @include('main.includes.header')
         @yield('content')
 
     </div>

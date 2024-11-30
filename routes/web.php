@@ -1,11 +1,16 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
 Route::namespace('Main')->name('main.')->group(function (){
     Route::get('/', 'IndexController')->name('index');
-    Route::get('/{id}', 'ShowController')->name('show');
+    Route::get('/{id}', 'ShowController')->where('id', '[0-9]+')->name('show');
+
+    Route::namespace('Comment')->prefix('{id}/comment')->name('comment.')->group(function () {
+       Route::post('/create', 'StoreController')->name('store');
+    });
 });
 
 Route::middleware(['auth', 'verified'])->namespace('Personal')->prefix('personal')->name('personal.')->group(function () {
