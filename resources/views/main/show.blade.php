@@ -5,10 +5,9 @@
         <div class="post-title-wrap">
             <p class="post-title-text">{{ $post->title }}</p>
             <p class="post-title-create">{{ $date->translatedFormat('d F Y H:i') }}</p>
-            <p class="post-title-comment">Комментариев: {{ $post->comments->count() }}</p>
         </div>
         <div class="post-img-wrap">
-            <img src="" alt="img">
+            <img class="post-img" src="" alt="img">
         </div>
         <div class="post-text-wrap">
             <p class="post-text">{{ $post->content }}</p>
@@ -59,10 +58,10 @@
                 <form action="{{ route('main.comment.store', $post->id) }}" method="post">
                     @csrf
                     <div class="comment_form-text">
-                        <textarea name="text" id="" placeholder="Текст комментария" cols="30" rows="10"></textarea>
+                        <textarea class="comment_form" name="text" id="" placeholder="Текст комментария" cols="30" rows="8"></textarea>
                     </div>
                     <div class="comment_form-submit-wrap">
-                        <input type="submit" value="Отправить">
+                        <input class="comment_form-submit" type="submit" value="Отправить">
                     </div>
                 </form>
 
@@ -83,7 +82,7 @@
                                 : {{ $comment->cteatedDate->diffForHumans() }}</p>
                         </div>
                         <div class="comments-text-wrap">
-                            <p class="comments-text">{{ $comment->text }}</p>
+                            <i class="comments-text">{{ $comment->text }}</i>
                         </div>
                     </div>
                 </div>

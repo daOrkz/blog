@@ -1,7 +1,12 @@
 .header-wrap {
+    height: 80px;
+    margin-bottom: 30px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    background-color: lightsteelblue;
 }
 
 .header-logo-wrap {
@@ -46,10 +51,22 @@
 }
 
 .header-auth-wrap {
-
+    margin-right: 30px;
 }
 
 .auth-link {
     font-size: 2em;
     margin-right: 20px;
+}
+
+.header-personal-wrap {
+    display: inline-block;
+}
+
+.header-logout-wrap {
+    display: inline-block;
+}
+
+.logout-btn {
+    padding: 5px 10px;
 }

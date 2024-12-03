@@ -1,0 +1,77 @@
+.post-title-text {
+    font-size: 3em;
+    text-align: center;
+}
+
+.post-title-create {
+    font-size: 2em;
+}
+
+.post-img-wrap {
+    /*margin: 0 auto;*/
+}
+
+.post-text {
+    font-size: 2em;
+}
+
+.like-button-wrap {
+    margin: 20px 0px;
+}
+
+.related-wrap {
+
+}
+
+.comment_form-wrap {
+
+}
+
+.comment_form {
+    font-size: 2em;
+}
+
+.comment_form-submit-wrap {
+    margin: 20px 0px;
+}
+
+.comment_form-submit {
+    padding: 5px 10px;
+    background-color: steelblue;
+}
+
+.comments-wrap {
+    margin: 20px 0px;
+}
+
+.comments-title-wrap {
+    margin: 10px 0px;
+}
+
+.comments-title {
+    font-size: 2em;
+}
+
+.comments-card-wrap {
+
+}
+
+.comments-card {
+    margin-bottom: 20px;
+}
+
+.comments-name-wrap {
+    margin-bottom: 5px;
+}
+
+.comments-name {
+    font-size: 2em;
+}
+
+.comments-text-wrap {
+
+}
+
+.comments-text {
+    font-size: 2em;
+}

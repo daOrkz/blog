@@ -27,7 +27,7 @@
             <div class="header-logout-wrap">
                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <input class="" type="submit" value="Выйти">
+                    <input class="logout-btn" type="submit" value="Выйти">
                 </form>
             </div>
         @endguest
