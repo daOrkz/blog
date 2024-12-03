@@ -14,43 +14,62 @@
             <p class="post-text">{{ $post->content }}</p>
         </div>
 
-        <div class="related-wrap">
-            <div class="related-title-wrap">
-                <h3 class="related-title">Похожие посты</h3>
+        @auth()
+            <div class="like-button-wrap">
+                <form action="{{ route('main.like.store', $post->id) }}" method="POST">
+                    @csrf
+                    <button class="like-button">
+
+                        @if(auth()->user()->userPostLiked->contains($post->id))
+                            <img class="like-img"
+                                 src="{{ asset('img/home/heart-fill.svg') }}" alt="">
+                        @else
+                            <img class="like-img" src="{{ asset('img/home/heart.svg') }}" alt="">
+                        @endif
+                    </button>
+                </form>
             </div>
-            @foreach($randomRelated as $relPost)
-                <div class="rel-card-wrap">
-                    <div class="rel-card">
-                        <div class="rel-img-wrap">
-                            <img src="" alt="img">
-                        </div>
-                        <div class="rel-title-wrap">
-                            <p class="rel-title">{{ $relPost->title }}</p>
-                        </div>
-                        <div class="rel-link-wrap">
-                            <a href="{{ route('main.show', $relPost->id) }}">Читать</a>
+        @endauth
+
+        @if($randomRelated->count() > 0)
+            <div class="related-wrap">
+                <div class="related-title-wrap">
+                    <h3 class="related-title">Похожие посты</h3>
+                </div>
+                @foreach($randomRelated as $relPost)
+                    <div class="rel-card-wrap">
+                        <div class="rel-card">
+                            <div class="rel-img-wrap">
+                                <img src="" alt="img">
+                            </div>
+                            <div class="rel-title-wrap">
+                                <p class="rel-title">{{ $relPost->title }}</p>
+                            </div>
+                            <div class="rel-link-wrap">
+                                <a href="{{ route('main.show', $relPost->id) }}">Читать</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
+                @endforeach
+            </div>
+        @endif
 
         @auth()
-        <div class="comment_form-wrap">
-            <form action="{{ route('main.comment.store', $post->id) }}" method="post">
-                @csrf
-                <div class="comment_form-text">
-                    <textarea name="text" id="" placeholder="Текст комментария" cols="30" rows="10"></textarea>
-                </div>
-                <div class="comment_form-submit-wrap">
-                    <input type="submit" value="Отправить">
-                </div>
-            </form>
+            <div class="comment_form-wrap">
+                <form action="{{ route('main.comment.store', $post->id) }}" method="post">
+                    @csrf
+                    <div class="comment_form-text">
+                        <textarea name="text" id="" placeholder="Текст комментария" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="comment_form-submit-wrap">
+                        <input type="submit" value="Отправить">
+                    </div>
+                </form>
 
-            @error('text')
+                @error('text')
                 <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-        </div>
+                @enderror
+            </div>
         @endauth
         <div class="comments-wrap">
             <div class="comments-title-wrap">
@@ -60,7 +79,8 @@
                 <div class="comments-card-wrap">
                     <div class="comments-card">
                         <div class="comments-name-wrap">
-                            <p class="comments-name">{{ $comment->user->name }} : {{ $comment->cteatedDate->diffForHumans() }}</p>
+                            <p class="comments-name">{{ $comment->user->name }}
+                                : {{ $comment->cteatedDate->diffForHumans() }}</p>
                         </div>
                         <div class="comments-text-wrap">
                             <p class="comments-text">{{ $comment->text }}</p>

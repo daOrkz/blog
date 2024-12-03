@@ -17,6 +17,7 @@
     /*max-width: 1000px;*/
     display: flex;
     flex-direction: column;
+    margin-right: 30px;
 }
 
 .post-card {
@@ -79,10 +80,22 @@ card-img-wrap {
 
 .card-link-wrap {
     padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.link-wrap {
+    margin-right: 20px;
 }
 
 .card-link {
     font-size: 1.5em;
+}
+
+.like-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 

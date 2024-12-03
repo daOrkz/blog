@@ -1,0 +1,55 @@
+.header-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-logo-wrap {
+
+}
+
+.header-logo-img {
+
+}
+
+.header-title-wrap {
+
+}
+
+.header-title {
+    font-size: 3em;
+}
+
+.header-nav-wrap {
+
+}
+
+.header-nav-list {
+
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+}
+
+.nav-elem {
+    margin-right: 15px;
+}
+
+.nav-elem:last-child {
+    margin-right: 0px;
+}
+
+.nav-link {
+    font-size: 2em;
+}
+
+.header-auth-wrap {
+
+}
+
+.auth-link {
+    font-size: 2em;
+    margin-right: 20px;
+}

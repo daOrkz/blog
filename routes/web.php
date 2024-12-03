@@ -11,6 +11,9 @@ Route::namespace('Main')->name('main.')->group(function (){
     Route::namespace('Comment')->prefix('{id}/comment')->name('comment.')->group(function () {
        Route::post('/create', 'StoreController')->name('store');
     });
+    Route::namespace('Like')->prefix('{id}/likes')->name('like.')->group(function () {
+       Route::post('/create', 'StoreController')->name('store');
+    });
 });
 
 Route::middleware(['auth', 'verified'])->namespace('Personal')->prefix('personal')->name('personal.')->group(function () {

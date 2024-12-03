@@ -27,7 +27,29 @@
                                 </div>
 
                                 <div class="card-link-wrap">
-                                    <a class="card-link" href="{{ route('main.show', $post->id) }}">Читать</a>
+                                    <div class="link-wrap">
+                                        <a class="card-link" href="{{ route('main.show', $post->id) }}">Читать</a>
+                                    </div>
+                                    @auth()
+                                    <div class="like-button-wrap">
+                                        <form action="{{ route('main.like.store', $post->id) }}" method="POST">
+                                            @csrf
+                                            <button class="like-button">
+                                                @if(auth()->user()->userPostLiked->contains($post->id))
+                                                    <img class="like-img"
+                                                         src="{{ asset('img/home/heart-fill.svg') }}" alt="">
+                                                @else
+                                                    <img class="like-img" src="{{ asset('img/home/heart.svg') }}" alt="">
+                                                @endif
+                                            </button>
+                                        </form>
+                                    </div>
+                                    @else
+                                        <div class="like-button-wrap">
+                                            <img class="like-img" src="{{ asset('img/home/heart.svg') }}" alt="">
+                                        </div>
+                                    @endauth
+
                                 </div>
                             </div>
                         </div>

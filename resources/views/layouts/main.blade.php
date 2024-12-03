@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ 'css/reset.css' }}">
     <link rel="stylesheet" href="{{ asset('css/main/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main/paginate.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main/header.css') }}">
     <title>{{ config('app.name', 'Blog') }}</title>
 </head>
 <body>
