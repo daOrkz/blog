@@ -15,7 +15,7 @@
                                 </div>
 
                                 <div class="card-img-wrap">
-                                    <img class="card-img-prev" src="" alt="prev_img">
+                                    <img class="card-img-prev" src="{{ asset($post->preview_image) }}" alt="prev_img">
                                 </div>
 
                                 <div class="card-category-wrap">

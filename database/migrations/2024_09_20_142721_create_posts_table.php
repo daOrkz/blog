@@ -27,7 +27,7 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->nullOnDelete();
-        });
+            });
 
         Schema::create('post_tags', function (Blueprint $table) {
             $table->id();
