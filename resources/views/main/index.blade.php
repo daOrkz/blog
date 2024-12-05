@@ -30,6 +30,9 @@
                                     <div class="link-wrap">
                                         <a class="card-link" href="{{ route('main.show', $post->id) }}">Читать</a>
                                     </div>
+                                    <div class="liked-count-wrap">
+                                        <p class="liked-count-text">{{ $post->postUserLiked->count() }}</p>
+                                    </div>
                                     @auth()
                                     <div class="like-button-wrap">
                                         <form action="{{ route('main.like.store', $post->id) }}" method="POST">

@@ -92,6 +92,10 @@ card-img-wrap {
     font-size: 1.5em;
 }
 
+.liked-count-text {
+    font-size: 1.5em;
+}
+
 .like-button {
     border: none;
     background-color: transparent;

@@ -34,6 +34,16 @@
 
 .like-button-wrap {
     margin: 20px 0px;
+    display: flex;
+    align-items: center;
+}
+
+.liked-count-text {
+    font-size: 2em;
+}
+
+.liked-count-wrap {
+    margin-right: 10px;
 }
 
 .related-wrap {

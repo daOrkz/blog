@@ -13,8 +13,12 @@
             <p class="post-text">{{ $post->content }}</p>
         </div>
 
-        @auth()
+
             <div class="like-button-wrap">
+                <div class="liked-count-wrap">
+                    <p class="liked-count-text">{{ $post->postUserLiked->count() }}</p>
+                </div>
+                @auth()
                 <form action="{{ route('main.like.store', $post->id) }}" method="POST">
                     @csrf
                     <button class="like-button">
@@ -27,6 +31,10 @@
                         @endif
                     </button>
                 </form>
+                @else
+                    <div class="like-button-wrap">
+                        <img class="like-img" src="{{ asset('img/home/heart.svg') }}" alt="">
+                    </div>
             </div>
         @endauth
 
@@ -52,6 +60,8 @@
                 </div>
             </div>
         @endif
+
+
 
         @auth()
             <div class="comment_form-wrap">
