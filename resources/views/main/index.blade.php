@@ -91,7 +91,7 @@
                                         </div>
 
                                         <div class="card-img-wrap">
-                                            <img class="card-img-prev" src="" alt="prev_img">
+                                            <img class="card-img-prev" src="{{ asset($post->preview_image) }}" alt="prev_img">
                                         </div>
 
                                         <div class="card-category-wrap">
@@ -125,7 +125,7 @@
                 <div class="liked">
                     <div class="liked-wrap">
                         <div class="liked-img-wrap">
-                            <img class="liked-img" src="" alt="liked_img">
+                            <img class="liked-img" src="{{ asset($post->preview_image) }}" alt="liked_img">
                         </div>
                         <div class="liked-title-wrap">
                             <a href="{{ (route('main.show', $post->id)) }}">

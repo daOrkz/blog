@@ -1,3 +1,7 @@
+.show-wrap {
+
+}
+
 .post-title-text {
     font-size: 3em;
     text-align: center;
@@ -5,10 +9,23 @@
 
 .post-title-create {
     font-size: 2em;
+    text-align: center;
+
 }
 
 .post-img-wrap {
-    /*margin: 0 auto;*/
+
+}
+
+.post-img {
+    height: 500px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%)
+}
+
+.post-text-wrap {
+    margin-top: 20px;
 }
 
 .post-text {
@@ -20,7 +37,33 @@
 }
 
 .related-wrap {
+    margin: 20px 0px;
+}
 
+.rel-card-wrap {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rel-img {
+    height: 150px;
+}
+
+.rel-card {
+    border: 1px solid black;
+}
+
+.rel-title {
+    font-size: 2.5em;
+}
+
+.rel-link {
+    font-size: 2.5em;
+}
+
+.related-title {
+    font-size: 3em;
 }
 
 .comment_form-wrap {

@@ -1,6 +1,6 @@
 <div class="header-wrap">
     <div class="header-logo-wrap">
-        <img class="header-logo-img" src="" alt="LOGO">
+        <img class="header-logo-img" src="{{ asset('img/home/logo.png') }}" alt="LOGO">
     </div>
     <div class="header-title-wrap">
         <h1 class="header-title">БЛОГ</h1>
@@ -8,7 +8,7 @@
     <div class="header-nav-wrap">
         <div class="header-nav-list">
             <ul class="nav-list">
-                <li class="nav-elem"><a class="nav-link" href="">One</a></li>
+                <li class="nav-elem"><a class="nav-link" href="{{ route('main.index') }}">Главная</a></li>
                 <li class="nav-elem"><a class="nav-link" href="">Two</a></li>
                 <li class="nav-elem"><a class="nav-link" href="">Three</a></li>
             </ul>
