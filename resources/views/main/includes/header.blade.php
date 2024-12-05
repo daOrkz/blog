@@ -9,7 +9,7 @@
         <div class="header-nav-list">
             <ul class="nav-list">
                 <li class="nav-elem"><a class="nav-link" href="{{ route('main.index') }}">Главная</a></li>
-                <li class="nav-elem"><a class="nav-link" href="">Two</a></li>
+                <li class="nav-elem"><a class="nav-link" href="{{ route('main.category.index') }}">Категории</a></li>
                 <li class="nav-elem"><a class="nav-link" href="">Three</a></li>
             </ul>
         </div>

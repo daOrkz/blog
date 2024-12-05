@@ -14,6 +14,13 @@ Route::namespace('Main')->name('main.')->group(function (){
     Route::namespace('Like')->prefix('{id}/likes')->name('like.')->group(function () {
        Route::post('/create', 'StoreController')->name('store');
     });
+    Route::namespace('Category')->prefix('category')->name('category.')->group(function (){
+        Route::get('/', 'IndexController')->name('index');
+
+        Route::namespace('Post')->prefix('{id}/posts')->name('post.')->group(function () {
+           Route::get('/', 'IndexController')->name('index');
+        });
+    });
 });
 
 Route::middleware(['auth', 'verified'])->namespace('Personal')->prefix('personal')->name('personal.')->group(function () {
