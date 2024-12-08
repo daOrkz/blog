@@ -49,6 +49,11 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
+    public function isAdmin()
+    {
+        return $this->role_id == 0;
+    }
+
     public function userPostLiked()
     {
         return $this->belongsToMany(Post::class, 'post_user_likes', 'user_id', 'post_id');

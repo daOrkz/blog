@@ -1,3 +1,4 @@
+{{--@dd(Auth::user()->can('admin', App\Models\User::class))--}}
 <div class="header-wrap">
     <div class="header-logo-wrap">
         <img class="header-logo-img" src="{{ asset('img/home/logo.png') }}" alt="LOGO">
@@ -10,10 +11,16 @@
             <ul class="nav-list">
                 <li class="nav-elem"><a class="nav-link" href="{{ route('main.index') }}">Главная</a></li>
                 <li class="nav-elem"><a class="nav-link" href="{{ route('main.category.index') }}">Категории</a></li>
-                <li class="nav-elem"><a class="nav-link" href="">Three</a></li>
+                @can('view-admin-panel-link', App\Models\User::class)
+                    <li class="nav-elem"><a class="nav-link" href="{{ route('admin.index') }}">Админ панель</a></li>
+                    @elsecan
+                    <li class="nav-elem"><a class="nav-link" href="">Админ панель</a></li>
+                @endcan
+
             </ul>
         </div>
     </div>
+
     <div class="header-auth-wrap">
         @guest()
             <div class="header-auth-guest-wrap">
