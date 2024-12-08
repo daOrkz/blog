@@ -20,7 +20,7 @@
                 <tr>
                     <td>{{ $post->id }}</td>
                     <td>{{ $post->title }}</td>
-                    <td><a href="{{ route('admin.posts.show', $post->id) }}">
+                    <td><a href="{{ route('main.show', $post->id) }}">
                             <img class="table-img" src="{{ asset('img/personal/eye.svg') }}" alt="eye">
                         </a></td>
                     <td>

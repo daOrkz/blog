@@ -20,7 +20,7 @@
                 <tr>
                     <td>{{ $comment->id }}</td>
                     <td>{{ $comment->text }}</td>
-                    <td><a href="{{ route('personal.comment.destroy', $comment->id) }}">
+                    <td><a href="{{ route('personal.comment.edit', $comment->id) }}">
                             <img class="table-img" src="{{ asset('img/personal/pencil.svg') }}" alt="eye">
                         </a></td>
                     <td>

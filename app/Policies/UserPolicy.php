@@ -28,7 +28,7 @@ class UserPolicy
 
     public function admin(?User $user)
     {
-
+dd(1);
         if ($user->isAdmin()) {
             return true;
         }

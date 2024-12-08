@@ -13,8 +13,8 @@
                 <li class="nav-elem"><a class="nav-link" href="{{ route('main.category.index') }}">Категории</a></li>
                 @can('view-admin-panel-link', App\Models\User::class)
                     <li class="nav-elem"><a class="nav-link" href="{{ route('admin.index') }}">Админ панель</a></li>
-                    @elsecan
-                    <li class="nav-elem"><a class="nav-link" href="">Админ панель</a></li>
+                @else
+                    <li class="nav-elem">Админ панель</li>
                 @endcan
 
             </ul>

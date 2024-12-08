@@ -35,9 +35,9 @@
                     <div class="like-button-wrap">
                         <img class="like-img" src="{{ asset('img/home/heart.svg') }}" alt="">
                     </div>
-            </div>
-        @endauth
 
+        @endauth
+    </div>
         @if($randomRelated->count() > 0)
             <div class="related-wrap">
                 <div class="related-title-wrap">
