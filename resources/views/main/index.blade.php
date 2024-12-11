@@ -61,21 +61,9 @@
             </div>
 
             <div>
-                {{ $posts->links('main/paginate') }}
+                {{ $posts->links('vendor/pagination/simple-bootstrap-4') }}
             </div>
 
-            {{--
-            <div class="pagination" id="pagination">
-                <a href="#" id="prev">Previous</a>
-                <a href="#" class="page-link" data-page="1">1</a>
-                <a href="#" class="page-link" data-page="2">2</a>
-                <a href="#" class="page-link" data-page="3">3</a>
-                <a href="#" id="next">Next</a>
-                <p id="page-numbers"> </p>
-            </div>
-
-            <script src="{{ asset('js/paginate.js') }}"> </script>
-            --}}
 
             <div class="post-random">
                 <div class="random-wrap">

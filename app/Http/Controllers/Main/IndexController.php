@@ -28,7 +28,7 @@ class IndexController extends Controller
 
 
 //        dd($this->authorize('admin', [self::class]));
-
+        
 
         return view('main.index', compact('posts', 'randomPosts', 'likedPosts'));
     }
