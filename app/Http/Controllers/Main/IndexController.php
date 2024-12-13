@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class IndexController extends Controller
 {
@@ -13,7 +14,8 @@ class IndexController extends Controller
     {
         $posts = Post::paginate(9);
 //        $posts = Post::all();
-        $randomPosts = Post::all()->random(4);
+        $allPosts = Post::all();
+        $randomPosts = $allPosts->random(fn (Collection $items) => min(4, count($items)));
 
         $likedPosts = Post::withCount('postUserLiked')
             ->orderBy('post_user_liked_count', 'DESC')
@@ -28,7 +30,7 @@ class IndexController extends Controller
 
 
 //        dd($this->authorize('admin', [self::class]));
-        
+
 
         return view('main.index', compact('posts', 'randomPosts', 'likedPosts'));
     }
